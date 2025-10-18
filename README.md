@@ -1,7 +1,3 @@
-Here is a README file generated for the SQLi lab repository.
-
------
-
 # SQLi Lab for SecOps
 
 This project provides a simple, containerized web application vulnerable to SQL injection. It is intended for educational and demonstration purposes, allowing users to safely practice identifying and exploiting SQLi vulnerabilities.
