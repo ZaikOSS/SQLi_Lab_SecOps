@@ -1,0 +1,30 @@
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: sqli_db
+      MYSQL_USER: sqli_user
+      MYSQL_PASSWORD: sqli_pass
+    volumes:
+      - ./db-init:/docker-entrypoint-initdb.d:ro
+      - db_data:/var/lib/mysql
+    networks:
+      - sqli-net
+
+  web:
+    build: .                  # <-- build using Dockerfile
+    depends_on:
+      - db
+    volumes:
+      - ./www:/var/www/html:rw
+    ports:
+      - "8080:80"
+    networks:
+      - sqli-net
+
+volumes:
+  db_data:
+
+networks:
+  sqli-net:
